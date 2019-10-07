@@ -4,7 +4,7 @@ Open.NAT.Core
 ======
 
 This is a fork of [Open.NAT](https://github.com/lontivero/Open.NAT). Originally, it was created as a simple port for netcore2.0 and published as-is, without much of support.  
-Now, the Open.NAT developers made the support of netstandard2.0 and net472 by themselves, but for some reason, did not provide a nuget package update. This fork aims to fix this and provide a nuget package with the laitest changes.
+Now, the Open.NAT developers made the support of netstandard2.0 and net472 by themselves, but for some reason, did not provide a nuget package update. This fork aims to fix this and provide a nuget package with the latest changes.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/bi7upsn1jyls6tpt?svg=true)](https://ci.appveyor.com/project/Aragas/open-nat-core)
 
