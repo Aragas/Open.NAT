@@ -1,0 +1,64 @@
+########################################################
+##               MASTER                               ##
+########################################################
+-
+  branches:
+    only:
+      - master
+
+  image: Visual Studio 2019
+  configuration: Default
+  platform: Default
+  version: 2.1.0.{build}
+  clone_depth: 1
+  
+  skip_commits:
+    files:
+      - docs/*
+      - LICENSE
+      - README.md
+      - .travis.yml
+      - codecov.yml
+      - .gitignore
+      
+  cache:
+    - packages -> **\packages.config, **\*.csproj, build.ps1 #local nuget folder
+#    - '%HOMEDRIVE%%HOMEPATH%\.nuget\packages -> **\packages.config, **\*.csproj, build.ps1' #global nuget folder
+    - '%LocalAppData%\Microsoft\dotnet -> appveyor.yml'
+    - '$HOME/.local/share/NuGet/v3-cache' #nuget cache ubuntu
+    - '$HOME/.local/share/NuGet/Cache' #nuget cache ubuntu
+    - '%LocalAppData%\NuGet\Cache' #v>3 nuget cache windows
+    - '%LocalAppData%\NuGet\v3-cache' #nuget cache windows
+
+  dotnet_csproj:
+    patch: true
+    file: 'Open.Nat\Open.Nat.csproj'
+    version: '{version}'
+    package_version: '{version}'
+    assembly_version: '{version}'
+    file_version: '{version}'
+    informational_version: '{version}'
+           
+  install:
+    - ps: ./init_script.ps1
+    - git submodule update --init --recursive
+      
+  build_script:
+    - ps: ./build_script.ps1
+    
+  test_script:
+    - ps: ./test_script.ps1
+
+  after_test:
+    - ps: ./after_test_nuget.ps1      
+
+  deploy:
+    - provider: NuGet
+      api_key:
+        secure: 3tR0AxYlqC9eiNZA8xH6KhO7cC6IbZo0xA/4R/yKwHLrX3Nj96Qk+bhAPFm2z/w7
+      skip_symbols: false
+      artifact: Open.NAT.nupkg
+      on:
+        os: Windows_NT
+        configuration: Default
+        APPVEYOR_REPO_TAG: true

@@ -1,0 +1,2 @@
+msbuild Open.Nat\Open.Nat.csproj /t:restore /property:Configuration=Debug /property:Platform=AnyCPU
+msbuild Open.Nat\Open.Nat.csproj /t:restore /property:Configuration=Release /property:Platform=AnyCPU
