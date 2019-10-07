@@ -61,4 +61,3 @@
       on:
         os: Windows_NT
         configuration: Default
-        APPVEYOR_REPO_TAG: true
