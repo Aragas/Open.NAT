@@ -61,3 +61,12 @@
       on:
         os: Windows_NT
         configuration: Default
+    - provider: NuGet
+      server: https://nuget.pkg.github.com/Aragas/index.json
+      artifact: Open.NAT.nupkg
+      username: Aragas
+      api_key:
+        secure: Cc5LQq7vuBMi2CTmoYPLFHuXeFeqTThn6xbL9O/f+r4GAut49B7rDBKfzbwl2TtC
+      on:
+        os: Windows_NT
+        configuration: Default
